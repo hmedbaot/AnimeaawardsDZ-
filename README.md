@@ -51,44 +51,56 @@
 
   <h1>🇩🇿 وزارة الثقافة الجزائرية - استبيان رسمي لأفضل أنمي لعام 2025</h1>
 
+  <!-- أنمي Attack on Titan -->
   <div class="anime">
     <h2>Attack on Titan</h2>
-    <img src="https://upload.wikimedia.org/wikipedia/en/f/f5/Attack_on_Titan_S4.jpg" alt="Attack on Titan">
+    <img src="https://upload.wikimedia.org/wikipedia/en/7/70/Attack_on_Titan_cover.jpg" alt="Attack on Titan">
     <br>
-    <button class="button" onclick="vote('aot')">صوّت الآن</button>
+    <button class="button" onclick="voteReal()">صوّت الآن</button>
   </div>
 
+  <!-- أنمي One Piece -->
   <div class="anime">
     <h2>One Piece</h2>
-    <img src="https://upload.wikimedia.org/wikipedia/en/2/2f/OnePieceVolume61Cover.png" alt="One Piece">
+    <img src="https://upload.wikimedia.org/wikipedia/en/6/65/One_Piece_Logo.png" alt="One Piece">
     <br>
-    <button class="button" onclick="vote('onepiece')">صوّت الآن</button>
+    <button class="button" onclick="voteFake('One Piece')">صوّت الآن</button>
   </div>
 
+  <!-- أنمي Steins;Gate -->
   <div class="anime">
     <h2>Steins;Gate</h2>
-    <img src="https://upload.wikimedia.org/wikipedia/en/3/3e/SteinsGate.jpg" alt="Steins Gate">
+    <img src="https://upload.wikimedia.org/wikipedia/en/b/b5/Steins_Gate.jpg" alt="Steins Gate">
     <br>
-    <button class="button" onclick="vote('steins')">صوّت الآن</button>
+    <button class="button" onclick="voteFake('Steins;Gate')">صوّت الآن</button>
   </div>
 
-  <div class="results" id="results">
+  <!-- نتائج حقيقية -->
+  <div class="results" id="realResults">
     <p>🔸 Attack on Titan: 45%</p>
     <p>🔸 One Piece: 35%</p>
     <p>🔸 Steins;Gate: 20%</p>
   </div>
 
+  <!-- نتائج مزيفة -->
+  <div class="results" id="fakeResults">
+    <p id="fake1"></p>
+    <p id="fake2"></p>
+    <p id="fake3"></p>
+  </div>
+
+  <!-- الخدعة -->
   <div class="reveal" id="reveal">
     😂 تم خداعك مجددًا يا صاحب العقل الصغير!<br>
-    <span style="font-size: 24px;">- أيــزن (فعلتها بالمناسبة)</span>
+    <span style="font-size: 24px;">- أحمد (المرة الخامسة يالطفل)</span>
     <br><br>
-    <img src="https://media.tenor.com/D3YgZl6APaEAAAAC/aizen-sosuke.gif" alt="Aizen Laughing" width="300">
+    <img src="https://i.pinimg.com/originals/35/39/0e/35390e58aa216a6c41d3b29eeb99750a.gif" alt="Aizen Laughing" width="300">
     <br>
-    <iframe src="https://www.youtube.com/embed/5xvbE3zdtmE?autoplay=1" width="300" height="200" allow="autoplay"></iframe>
+    <iframe src="https://www.youtube.com/embed/5xvbE3zdtmE?autoplay=1" width="300" height="200" allow="autoplay" title="ضحكة أيزن"></iframe>
   </div>
 
   <!-- المقال -->
-  <div style="text-align: right; direction: rtl; margin-top: 60px; background: #ffffff; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); font-family: 'Tahoma', sans-serif; font-size: 16px; line-height: 1.9;">
+  <div style="text-align: right; direction: rtl; margin-top: 60px; background: #ffffff; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); font-size: 16px; line-height: 1.9;">
     <h2 style="color: #004080;">🔍 نبذة عن أنمي "Attack on Titan"</h2>
     <p>
       يُعد أنمي "هجوم العمالقة" من أبرز الأعمال الفنية اليابانية التي حققت صدىً عالميًا واسعًا، لما يحمله من عمق درامي وإسقاطات سياسية واجتماعية جريئة، وأسلوب بصري مذهل.
@@ -108,18 +120,34 @@
     <p style="font-weight: bold; margin-top: 30px; font-size: 18px;">🚨 ملاحظة: التصويت حقيقي ويتم اعتماده من قبل لجنة الأنمي الوطنية.</p>
   </div>
 
+  <!-- سكربت -->
   <script>
-    function vote(choice) {
-      if (choice === 'aot') {
-        document.getElementById('results').style.display = 'block';
-        setTimeout(() => {
-          document.getElementById('reveal').style.display = 'block';
-          document.querySelector('iframe').style.display = 'block';
-        }, 2500);
-      } else {
-        // عرض النتائج فقط بدون خدعة
-        document.getElementById('results').style.display = 'block';
-      }
+    function voteReal() {
+      document.getElementById('realResults').style.display = 'block';
+      setTimeout(() => {
+        document.getElementById('reveal').style.display = 'block';
+        document.querySelector('iframe').style.display = 'block';
+      }, 2500);
+    }
+
+    function voteFake(name) {
+      let percentages = {
+        "Attack on Titan": "45%",
+        "One Piece": "30%",
+        "Steins;Gate": "25%"
+      };
+
+      // تحديث النتائج حسب الاختيار المزيف
+      document.getElementById('fake1').textContent = "🔸 Attack on Titan: " + percentages["Attack on Titan"];
+      document.getElementById('fake2').textContent = "🔸 One Piece: " + percentages["One Piece"];
+      document.getElementById('fake3').textContent = "🔸 Steins;Gate: " + percentages["Steins;Gate"];
+
+      document.getElementById('fakeResults').style.display = 'block';
+
+      setTimeout(() => {
+        document.getElementById('reveal').style.display = 'block';
+        document.querySelector('iframe').style.display = 'block';
+      }, 2500);
     }
   </script>
 
